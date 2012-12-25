@@ -1,0 +1,592 @@
+html, body, #map {
+            	position: absolute;
+                margin: 0;
+                top: 0px;
+                left: 0px;
+                bottom: 0px;
+                right: 0px;
+                z-index: 0;
+            }
+        #iframe {
+        		height: 100%; 
+        		width: 100%; 
+        		display: block}
+
+			#background {
+            position: fixed;
+            top: 1px;
+            left: 1px;
+            width: 818px;
+            height: 550px;
+            color: black;
+     			background-color:white;
+            z-index: 2;
+				font-size: 26px;
+				opacity:  0.8;
+       		} 
+
+   		   #header {
+                position: fixed;
+                top: 5px;
+                left: 1px;
+                color: black;
+                z-index: 3;
+   				 font-family: sans-serif; 
+   				 font-size: 30px; 
+     				 background-color:#feff60;
+	             width: 818px;
+	             height: 54px;
+	   	  		 opacity:  0.7;
+       		}
+   		   #header2 {
+                position: fixed;
+                top: 63px;
+                left: 0px;
+                z-index: 3;
+	             width: 63px;
+	             height: 40px;
+	   	  		 opacity:  0.7;
+       		} 
+   		   #plus {
+                position: fixed;
+                top: 106px;
+                left: 0px;
+                z-index: 0;
+	             width: 40px;
+	             height: 40px;
+	   	  		 opacity:  0.7;
+       		} 
+
+   		   #zoom {
+                position: fixed;
+                top: 70px;
+                right: 5px;
+                z-index: 5;
+       		} 
+       		
+       		#headertext {
+                position: fixed;
+                top: 14px;
+                left: 70px;
+                color: black;
+                z-index: 4;
+   				 font-family: sans-serif; 
+   				 font-size: 30px; 
+ 	   	  		 opacity:  0.7;
+       		} 
+       		
+	    	   #headertext2 {
+                position: fixed;
+                top: 17px;
+                left: 215px;
+                color: black;
+                z-index: 3;
+   				 font-family: sans-serif; 
+   				 font-size: 16px;
+  	   	  		 opacity:  0.7;
+       		} 
+
+       		#buttons {
+                position: fixed;
+                top: 63px;
+                left: 68px;
+                z-index: 3;
+   				 font-size: 15px; 
+
+       		} 		
+            #s1-1 {
+                z-index: 3;
+	  				 opacity:  0.7;
+       		} 
+
+       	    #s1-2 {
+                z-index: 3;
+	  				 opacity:  0.7;
+       		} 
+
+            #s1-3 {
+                z-index: 3;
+	  				 opacity:  0.7;
+       		} 
+     		  		
+            #s1-4 {
+                z-index: 3;
+	  				 opacity:  0.7;
+       		} 
+      		
+            #s1-5 {
+                z-index: 3;
+	  				 opacity:  0.7;
+       		} 
+      		
+            #s1-6 {
+                z-index: 3;
+	  				 opacity:  0.7;
+       		}       		
+            #s1-7 {
+                z-index: 4;
+       		}   
+            #add {
+                z-index: 2;
+       		}   
+           
+           #Intro {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:block;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		}    
+       		    		
+            #LeihLagerInfo {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		}        		
+            #LeihLagerMaterial {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		}       		
+            #LeihLagerOrte {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		}       		
+            #LeihLagerDiskussion {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: hidden;
+					 overflow-x: hidden;
+       		}       		
+       		
+       		#TicketInfo {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		}   
+
+       		#TicketMaterial {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		}      	
+       		#TicketOrte {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		} 
+       		#TicketDiskussion {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: hidden;
+					 overflow-x: hidden;
+       		}   
+       		
+       		#PfandInfo {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		}   
+       		#PfandMaterial {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		} 
+       		#PfandOrte {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		}            			    
+       		#PfandDiskussion {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: hidden;
+					 overflow-x: hidden;
+       		}   
+
+       		#Mehr {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		}     
+       		
+       		#Stickr {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		}
+    
+       		#GiveTakeInfo {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		}   
+
+       		#GiveTakeMaterial {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		}      	
+       		#GiveTakeOrte {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+	  				 opacity:  0.7;
+	   			 overflow: scroll;
+					 overflow-x: hidden;
+       		} 
+       		#GiveTakeDiskussion {
+                position: fixed;
+                top: 138px;
+                left: 67px;
+                width: 750px;
+                height: 410px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+	  				 opacity:  0.7;
+	   			 overflow: hidden;
+					 overflow-x: hidden;
+       		}  
+
+      		#GiveTakeBut {
+                position: fixed;
+                top: 109px;
+                left: 67px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+       		}      
+      		#LeihLagerBut {
+                position: fixed;
+                top: 109px;
+                left: 67px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+       		}
+      		#TicketBut {
+                position: fixed;
+                top: 109px;
+                left: 67px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+       		}     		
+      		#PfandBut {
+                position: fixed;
+                top: 109px;
+                left: 67px;
+                display:none;
+   				 font-family: sans-serif; 
+   				 font-size: 14px; 
+   				 background-color:white;
+   				 border-style:solid;
+   				 border-width:2px;
+   				 border-color:white;
+	   			 z-index: 4;
+ 	  				 opacity:  0.7;
+       		} 
+
+
+   		#icon {
+                position: absolute;
+                top: 8px;
+                left: 5px;
+                width: 80px;
+                z-index: 4;
+                opacity: 0.7;
+       		} 
+ 
+       	.btn {
+                z-index: 3;   
+                font-family: sans-serif; 
+   				 font-size: 16px; 
+    				 background: black;
+					 color: white;
+					 border: none;	             
+	  				 opacity:  0.9;
+       		} 
+		    .mapbtn2 {
+                z-index: 3;   
+                font-family: sans-serif; 
+   				 font-size: 16px; 
+    				 background: #feff60;
+  					 border: none;	    
+					 color: black;
+					 top: 1px;
+	  				 vertical-align: top;	  	
+       		} 
+       	.mapbtn1 {
+                z-index: 4;   
+                font-family: sans-serif; 
+   				 font-size: 16px; 
+    				 background: #feff60;
+					 color: black;
+					 top: 1px;
+					 width: 65px;
+					 height: 40px;
+					 border:none;
+	  				 vertical-align: top;	  	
+       		} 
+			
+			.sbtn {
+                z-index: 3;
+                font-family: sans-serif; 
+   				 font-size: 14px; 
+     				 background-color:black;
+     				 color: white;
+	  				 opacity:  1.0;
+	  				 border: none;
+	  				 text-align: left;
+       		} 

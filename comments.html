@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html> 
+    <head>     
+       <title>#@ - Gridr.at</title>                 
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" > 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+        <meta name="apple-mobile-web-app-capable" content="yes"> 
+        <link rel="stylesheet" href="OLstyle.css" type="text/css">
+        <link rel="stylesheet" href="main.css" type="text/css">
+        <link rel="stylesheet" type="text/css" href="comments/css/stylesheet.css"/>
+        
+
+
+      <script src="popup/OpenLayers.js"></script> 
+      <script type="text/javascript" src="CM/cloudmade.js"></script>
+      <script src="http://openlayers.org/dev/lib/OpenLayers/Lang/es.js"></script>
+      <script src="http://openlayers.org/dev/lib/OpenLayers/Lang/ca.js"></script>
+      <script src="popup/langs.js"></script>		
+      <script src="popup/SmartPopup-URI-i18n.js"></script>
+		<script src="frm.js"></script>
+		
+              
+    </head> 
+    <body onload="init()"> 
+<div id="map"></div>
+
+<div id="coords"></div>
+
+<div id="background">  
+</div>
+
+<div id="zoom">
+        <a href="#zoomin" id="zoomin"><img src="/img/plus.png"></a></br>
+        <a href="#zoomout" id="zoomout"><img src="/img/minus.png"></a>
+</div>
+
+
+<div id="plus">
+<input id="add"
+	type="button" align="center"  class="mapbtn2"
+	value="Mehr Orte
+markieren" 
+	onclick="window.location='/add/add.html'"
+	onMouseOver="this.style.background='black';this.style.color='white';" onmouseout="this.style.background='#feff60';this.style.color='black';"
+	/>
+</div>
+
+<div id="Infoblock" class="infoblock">
+
+
+
+<div id="cover"> </div>
+<div id="header"> </div>
+<div id="icon">
+<input 
+	type="image" align="left" 
+	src="/img/newicosmall.png" 
+	onclick="window.location='/index.html'" 
+	onmouseover="this.src='/img/newicosmall-1.png';" onmouseout="this.src='/img/newicosmall.png';"/>   </div>
+
+<div id="header2"><input id="s1-7"
+	type="button" align="center"  class="mapbtn1"
+	value="Karte" 
+	onclick="document.getElementById('background').style.display='none'; document.getElementById('Intro').style.display='none';
+	document.getElementById('s1-7').style.color='black'; document.getElementById('s1-7').style.background='#feff60';
+	document.getElementById('s1-1').style.color='white'; document.getElementById('s1-2').style.color='white'; document.getElementById('s1-3').style.color='white'; document.getElementById('s1-4').style.color='white'; document.getElementById('s1-5').style.color='white';document.getElementById('s1-6').style.color='white';
+	document.getElementById('s1-1').style.background='black'; document.getElementById('s1-2').style.background='black'; document.getElementById('s1-3').style.background='black'; document.getElementById('s1-4').style.background='black'; document.getElementById('s1-5').style.background='black'; document.getElementById('s1-6').style.background='black';
+	document.getElementById('GiveTakeBut').style.display='none'; document.getElementById('LeihLagerBut').style.display='none'; document.getElementById('TicketBut').style.display='none'; document.getElementById('PfandBut').style.display='none';		
+	document.getElementById('Stickr').style.display='none'; document.getElementById('GiveTakeInfo').style.display='none'; document.getElementById('Mehr').style.display='none'; document.getElementById('LeihLagerInfo').style.display='none'; document.getElementById('PfandInfo').style.display='none'; document.getElementById('TicketInfo').style.display='none'; 
+	document.getElementById('LeihLagerMaterial').style.display='none'; document.getElementById('LeihLagerOrte').style.display='none'; document.getElementById('LeihLagerDiskussion').style.display='none'; 
+	document.getElementById('TicketMaterial').style.display='none'; document.getElementById('TicketOrte').style.display='none'; document.getElementById('TicketDiskussion').style.display='none'; 
+	document.getElementById('PfandMaterial').style.display='none'; document.getElementById('PfandOrte').style.display='none'; document.getElementById('PfandDiskussion').style.display='none';
+	document.getElementById('GiveTakeMaterial').style.display='none'; document.getElementById('GiveTakeOrte').style.display='none'; document.getElementById('GiveTakeDiskussion').style.display='none'"
+	onMouseOver="this.style.background='black';this.style.color='white';" onmouseout="this.style.background='#feff60';this.style.color='black';"
+	/>
+</div>
+<div id="headertext"><b>gridr.at </b>
+</div> </br> 
+
+<div id="headertext2">
+<b>Berlin teilen und verbinden!</b></br> 
+Die Nachbarschaft hacken und besser machen!</br>
+</div>
+
+<div id="buttons">
+
+<input id="s1-1"
+	type="button" align="center"  class="btn"
+	value="Give n
+Take" 
+	onclick="document.getElementById('s1-1').style.color='black'; document.getElementById('s1-1').style.background='#feff60';
+	document.getElementById('s1-2').style.color='white'; document.getElementById('s1-3').style.color='white'; document.getElementById('s1-4').style.color='white'; document.getElementById('s1-5').style.color='white'; document.getElementById('s1-6').style.color='white';document.getElementById('s1-7').style.color='white';
+	document.getElementById('s1-2').style.background='black'; document.getElementById('s1-3').style.background='black'; document.getElementById('s1-4').style.background='black'; document.getElementById('s1-5').style.background='black'; document.getElementById('s1-6').style.background='black'; document.getElementById('s1-7').style.background='black';
+	document.getElementById('GTI').style.color='black'; document.getElementById('GTI').style.background='#feff60';	
+	document.getElementById('GTM').style.color='white'; document.getElementById('GTO').style.color='white'; document.getElementById('GTD').style.color='white'; 
+	document.getElementById('GTM').style.background='black'; document.getElementById('GTO').style.background='black'; document.getElementById('GTD').style.background='black'; 	
+	document.getElementById('GiveTakeBut').style.display='block'; document.getElementById('LeihLagerBut').style.display='none'; document.getElementById('TicketBut').style.display='none'; document.getElementById('PfandBut').style.display='none';
+	document.getElementById('GiveTakeInfo').style.display='block'; document.getElementById('Mehr').style.display='none'; document.getElementById('LeihLagerInfo').style.display='none'; document.getElementById('PfandInfo').style.display='none'; document.getElementById('TicketInfo').style.display='none'; document.getElementById('Stickr').style.display='none';
+	document.getElementById('LeihLagerMaterial').style.display='none'; document.getElementById('LeihLagerOrte').style.display='none'; document.getElementById('LeihLagerDiskussion').style.display='none'; 
+	document.getElementById('TicketMaterial').style.display='none'; document.getElementById('TicketOrte').style.display='none'; document.getElementById('TicketDiskussion').style.display='none'; 
+	document.getElementById('PfandMaterial').style.display='none'; document.getElementById('PfandOrte').style.display='none'; document.getElementById('PfandDiskussion').style.display='none';
+	document.getElementById('GiveTakeMaterial').style.display='none'; document.getElementById('GiveTakeOrte').style.display='none'; document.getElementById('GiveTakeDiskussion').style.display='none';
+	document.getElementById('background').style.display='block';document.getElementById('Intro').style.display='none';"	
+	onMouseOver="this.style.opacity=0.5;" onmouseout="this.style.opacity=0.7;"
+	/>
+
+<input id="s1-2"
+	type="button" align="center"  class="btn"
+	value="Leih
+Lager" 
+	onclick="document.getElementById('s1-2').style.color='black'; document.getElementById('s1-2').style.background='#feff60';
+	document.getElementById('s1-1').style.color='white'; document.getElementById('s1-3').style.color='white'; document.getElementById('s1-4').style.color='white'; document.getElementById('s1-5').style.color='white'; document.getElementById('s1-6').style.color='white';document.getElementById('s1-7').style.color='white';
+	document.getElementById('s1-1').style.background='black'; document.getElementById('s1-3').style.background='black'; document.getElementById('s1-4').style.background='black'; document.getElementById('s1-5').style.background='black'; document.getElementById('s1-6').style.background='black'; document.getElementById('s1-7').style.background='black';
+	document.getElementById('LLI').style.color='black'; document.getElementById('LLI').style.background='#feff60';		
+	document.getElementById('LLM').style.color='white'; document.getElementById('LLO').style.color='white'; document.getElementById('LLD').style.color='white'; 
+	document.getElementById('LLM').style.background='black'; document.getElementById('LLO').style.background='black'; document.getElementById('LLD').style.background='black'; 	
+	document.getElementById('GiveTakeBut').style.display='none'; document.getElementById('LeihLagerBut').style.display='block'; document.getElementById('TicketBut').style.display='none'; document.getElementById('PfandBut').style.display='none';	
+	document.getElementById('LeihLagerInfo').style.display='block'; document.getElementById('GiveTakeInfo').style.display='none'; document.getElementById('TicketInfo').style.display='none'; document.getElementById('PfandInfo').style.display='none'; document.getElementById('Mehr').style.display='none'; document.getElementById('Stickr').style.display='none';
+	document.getElementById('LeihLagerMaterial').style.display='none'; document.getElementById('LeihLagerOrte').style.display='none'; document.getElementById('LeihLagerDiskussion').style.display='none'; 
+	document.getElementById('TicketMaterial').style.display='none'; document.getElementById('TicketOrte').style.display='none'; document.getElementById('TicketDiskussion').style.display='none'; 
+	document.getElementById('PfandMaterial').style.display='none'; document.getElementById('PfandOrte').style.display='none'; document.getElementById('PfandDiskussion').style.display='none';
+	document.getElementById('GiveTakeMaterial').style.display='none'; document.getElementById('GiveTakeOrte').style.display='none'; document.getElementById('GiveTakeDiskussion').style.display='none';
+	document.getElementById('background').style.display='block';document.getElementById('Intro').style.display='none';"
+	onMouseOver="this.style.opacity=0.5;" onmouseout="this.style.opacity=0.7;"
+	/>
+
+<input id="s1-3"
+	type="button" align="center"  class="btn"
+	value="Ticket
+spenden" 
+	onclick="document.getElementById('s1-3').style.color='black'; document.getElementById('s1-3').style.background='#feff60';
+	document.getElementById('s1-1').style.color='white'; document.getElementById('s1-2').style.color='white'; document.getElementById('s1-4').style.color='white'; document.getElementById('s1-5').style.color='white'; document.getElementById('s1-6').style.color='white';document.getElementById('s1-7').style.color='white';
+	document.getElementById('s1-1').style.background='black'; document.getElementById('s1-2').style.background='black'; document.getElementById('s1-4').style.background='black'; document.getElementById('s1-5').style.background='black'; document.getElementById('s1-6').style.background='black'; document.getElementById('s1-7').style.background='black';
+	document.getElementById('TI').style.color='black'; document.getElementById('TI').style.background='#feff60';	
+	document.getElementById('TM').style.color='white'; document.getElementById('TO').style.color='white'; document.getElementById('TD').style.color='white'; 
+	document.getElementById('TM').style.background='black'; document.getElementById('TO').style.background='black'; document.getElementById('TD').style.background='black'; 	
+	document.getElementById('GiveTakeBut').style.display='none'; document.getElementById('LeihLagerBut').style.display='none'; document.getElementById('TicketBut').style.display='block'; document.getElementById('PfandBut').style.display='none';	
+	document.getElementById('TicketInfo').style.display='block'; document.getElementById('GiveTakeInfo').style.display='none'; document.getElementById('LeihLagerInfo').style.display='none'; document.getElementById('PfandInfo').style.display='none'; document.getElementById('Mehr').style.display='none'; document.getElementById('Stickr').style.display='none';
+	document.getElementById('LeihLagerMaterial').style.display='none'; document.getElementById('LeihLagerOrte').style.display='none'; document.getElementById('LeihLagerDiskussion').style.display='none'; 
+	document.getElementById('TicketMaterial').style.display='none'; document.getElementById('TicketOrte').style.display='none'; document.getElementById('TicketDiskussion').style.display='none'; 
+	document.getElementById('PfandMaterial').style.display='none'; document.getElementById('PfandOrte').style.display='none'; document.getElementById('PfandDiskussion').style.display='none';
+	document.getElementById('GiveTakeMaterial').style.display='none'; document.getElementById('GiveTakeOrte').style.display='none'; document.getElementById('GiveTakeDiskussion').style.display='none';
+	document.getElementById('background').style.display='block';document.getElementById('Intro').style.display='none';"
+	onMouseOver="this.style.opacity=0.5;" onmouseout="this.style.opacity=0.7;"
+	/>
+
+<input id="s1-4"
+	type="button" align="center"  class="btn"
+	value="Pfand
+spenden" 
+	onclick="document.getElementById('s1-4').style.color='black'; document.getElementById('s1-4').style.background='#feff60';
+	document.getElementById('s1-1').style.color='white'; document.getElementById('s1-2').style.color='white'; document.getElementById('s1-3').style.color='white'; document.getElementById('s1-5').style.color='white'; document.getElementById('s1-6').style.color='white';document.getElementById('s1-7').style.color='white';
+	document.getElementById('s1-1').style.background='black'; document.getElementById('s1-2').style.background='black'; document.getElementById('s1-3').style.background='black'; document.getElementById('s1-5').style.background='black'; document.getElementById('s1-6').style.background='black'; document.getElementById('s1-7').style.background='black';
+	document.getElementById('PI').style.color='black'; document.getElementById('PI').style.background='#feff60';
+	document.getElementById('PM').style.color='white'; document.getElementById('PO').style.color='white'; document.getElementById('PD').style.color='white'; 
+	document.getElementById('PM').style.background='black'; document.getElementById('PO').style.background='black'; document.getElementById('PD').style.background='black'; 	
+	document.getElementById('GiveTakeBut').style.display='none'; document.getElementById('LeihLagerBut').style.display='none'; document.getElementById('TicketBut').style.display='none'; document.getElementById('PfandBut').style.display='block';	
+	document.getElementById('PfandInfo').style.display='block'; document.getElementById('GiveTakeInfo').style.display='none'; document.getElementById('LeihLagerInfo').style.display='none'; document.getElementById('TicketInfo').style.display='none'; document.getElementById('Mehr').style.display='none'; document.getElementById('Stickr').style.display='none';
+	document.getElementById('LeihLagerMaterial').style.display='none'; document.getElementById('LeihLagerOrte').style.display='none'; document.getElementById('LeihLagerDiskussion').style.display='none'; 
+	document.getElementById('TicketMaterial').style.display='none'; document.getElementById('TicketOrte').style.display='none'; document.getElementById('TicketDiskussion').style.display='none'; 
+	document.getElementById('PfandMaterial').style.display='none'; document.getElementById('PfandOrte').style.display='none'; document.getElementById('PfandDiskussion').style.display='none';
+	document.getElementById('GiveTakeMaterial').style.display='none'; document.getElementById('GiveTakeOrte').style.display='none'; document.getElementById('GiveTakeDiskussion').style.display='none';
+	document.getElementById('background').style.display='block';document.getElementById('Intro').style.display='none';"
+	onMouseOver="this.style.opacity=0.5;" onmouseout="this.style.opacity=0.7;"
+	/>
+
+<input id="s1-5"
+	type="button" align="center"  class="btn"
+	value="Mehr
+Machen" 
+	onclick="document.getElementById('s1-5').style.color='black'; document.getElementById('s1-5').style.background='#feff60';
+	document.getElementById('s1-1').style.color='white'; document.getElementById('s1-2').style.color='white'; document.getElementById('s1-3').style.color='white'; document.getElementById('s1-4').style.color='white'; document.getElementById('s1-6').style.color='white'; document.getElementById('s1-7').style.color='white';
+	document.getElementById('s1-1').style.background='black'; document.getElementById('s1-2').style.background='black'; document.getElementById('s1-3').style.background='black'; document.getElementById('s1-4').style.background='black'; document.getElementById('s1-6').style.background='black'; document.getElementById('s1-7').style.background='black';
+	document.getElementById('GiveTakeBut').style.display='none'; document.getElementById('LeihLagerBut').style.display='none'; document.getElementById('TicketBut').style.display='none'; document.getElementById('PfandBut').style.display='none';			
+	document.getElementById('Mehr').style.display='block'; document.getElementById('GiveTakeInfo').style.display='none'; document.getElementById('LeihLagerInfo').style.display='none'; document.getElementById('PfandInfo').style.display='none'; document.getElementById('TicketInfo').style.display='none'; document.getElementById('Stickr').style.display='none';
+	document.getElementById('LeihLagerMaterial').style.display='none'; document.getElementById('LeihLagerOrte').style.display='none'; document.getElementById('LeihLagerDiskussion').style.display='none'; 
+	document.getElementById('TicketMaterial').style.display='none'; document.getElementById('TicketOrte').style.display='none'; document.getElementById('TicketDiskussion').style.display='none'; 
+	document.getElementById('PfandMaterial').style.display='none'; document.getElementById('PfandOrte').style.display='none'; document.getElementById('PfandDiskussion').style.display='none';
+	document.getElementById('GiveTakeMaterial').style.display='none'; document.getElementById('GiveTakeOrte').style.display='none'; document.getElementById('GiveTakeDiskussion').style.display='none';
+	document.getElementById('background').style.display='block';document.getElementById('Intro').style.display='none';"
+	onMouseOver="this.style.opacity=0.5;" onmouseout="this.style.opacity=0.7;"
+	/>
+
+<input id="s1-6"
+	type="button" align="center"  class="btn"
+	value="Gridr
+Stickr" 
+	onclick="document.getElementById('s1-6').style.color='black'; document.getElementById('s1-6').style.background='#feff60';
+	document.getElementById('s1-1').style.color='white'; document.getElementById('s1-2').style.color='white'; document.getElementById('s1-3').style.color='white'; document.getElementById('s1-4').style.color='white'; document.getElementById('s1-5').style.color='white'; document.getElementById('s1-7').style.color='white';
+	document.getElementById('s1-1').style.background='black'; document.getElementById('s1-2').style.background='black'; document.getElementById('s1-3').style.background='black'; document.getElementById('s1-4').style.background='black'; document.getElementById('s1-5').style.background='black'; document.getElementById('s1-7').style.background='black';
+	document.getElementById('GiveTakeBut').style.display='none'; document.getElementById('LeihLagerBut').style.display='none'; document.getElementById('TicketBut').style.display='none'; document.getElementById('PfandBut').style.display='none';		
+	document.getElementById('Stickr').style.display='block'; document.getElementById('GiveTakeInfo').style.display='none'; document.getElementById('Mehr').style.display='none'; document.getElementById('LeihLagerInfo').style.display='none'; document.getElementById('PfandInfo').style.display='none'; document.getElementById('TicketInfo').style.display='none'; 
+	document.getElementById('LeihLagerMaterial').style.display='none'; document.getElementById('LeihLagerOrte').style.display='none'; document.getElementById('LeihLagerDiskussion').style.display='none'; 
+	document.getElementById('TicketMaterial').style.display='none'; document.getElementById('TicketOrte').style.display='none'; document.getElementById('TicketDiskussion').style.display='none'; 
+	document.getElementById('PfandMaterial').style.display='none'; document.getElementById('PfandOrte').style.display='none'; document.getElementById('PfandDiskussion').style.display='none';
+	document.getElementById('GiveTakeMaterial').style.display='none'; document.getElementById('GiveTakeOrte').style.display='none'; document.getElementById('GiveTakeDiskussion').style.display='none';
+	document.getElementById('background').style.display='block';document.getElementById('Intro').style.display='none';"
+	onMouseOver="this.style.opacity=0.5;" onmouseout="this.style.opacity=0.7;"
+	/>
+</div>
+
+<div id="Intro">
+<h1>Willkomen bei Gridr</h1>
+Gridr blablabla
+</div>
+
+<div id="GiveTakeBut">
+<input id="GTI"
+	type="button" align="left" class="sbtn"
+	value="Info"
+	onclick="document.getElementById('GTI').style.color='black'; document.getElementById('GTI').style.background='#feff60';
+	document.getElementById('GTM').style.color='white'; document.getElementById('GTO').style.color='white'; document.getElementById('GTD').style.color='white'; 
+	document.getElementById('GTM').style.background='black'; document.getElementById('GTO').style.background='black'; document.getElementById('GTD').style.background='black'; 	
+	document.getElementById('GiveTakeInfo').style.display='block'; document.getElementById('GiveTakeMaterial').style.display='none';document.getElementById('GiveTakeOrte').style.display='none'; document.getElementById('GiveTakeDiskussion').style.display='none'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/> 
+<input id="GTM"
+	type="button" align="left" class="sbtn"
+	value="Material"
+	onclick="document.getElementById('GTM').style.color='black'; document.getElementById('GTM').style.background='#feff60';
+	document.getElementById('GTI').style.color='white'; document.getElementById('GTO').style.color='white'; document.getElementById('GTD').style.color='white'; 
+	document.getElementById('GTI').style.background='black'; document.getElementById('GTO').style.background='black'; document.getElementById('GTD').style.background='black'; 	
+	document.getElementById('GiveTakeInfo').style.display='none'; document.getElementById('GiveTakeMaterial').style.display='block';document.getElementById('GiveTakeOrte').style.display='none'; document.getElementById('GiveTakeDiskussion').style.display='none'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/> 
+<input id="GTO"
+	type="button" align="left" class="sbtn"
+	value="Orte"
+	onclick="document.getElementById('GTO').style.color='black'; document.getElementById('GTO').style.background='#feff60';
+	document.getElementById('GTM').style.color='white'; document.getElementById('GTI').style.color='white'; document.getElementById('GTD').style.color='white'; 
+	document.getElementById('GTM').style.background='black'; document.getElementById('GTI').style.background='black'; document.getElementById('GTD').style.background='black'; 	
+	document.getElementById('GiveTakeInfo').style.display='none'; document.getElementById('GiveTakeMaterial').style.display='none';document.getElementById('GiveTakeOrte').style.display='block'; document.getElementById('GiveTakeDiskussion').style.display='none'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/> 
+<input id="GTD"
+	type="button" align="left" class="sbtn"
+	value="Kommentar"
+	onclick="document.getElementById('GTD').style.color='black'; document.getElementById('GTD').style.background='#feff60';
+	document.getElementById('GTM').style.color='white'; document.getElementById('GTO').style.color='white'; document.getElementById('GTI').style.color='white'; 
+	document.getElementById('GTM').style.background='black'; document.getElementById('GTO').style.background='black'; document.getElementById('GTI').style.background='black'; 	
+	document.getElementById('GiveTakeInfo').style.display='none'; document.getElementById('GiveTakeMaterial').style.display='none';document.getElementById('GiveTakeOrte').style.display='none'; document.getElementById('GiveTakeDiskussion').style.display='block'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/>
+</div>
+
+
+<div id="GiveTakeInfo" >
+
+<h2>Info</h2></br>
+Give & Take placeholder</br> 
+
+</div>
+
+<div id="GiveTakeMaterial" >
+
+<h2>Material</h2></br>
+Sticker und Flyer placeholder:</br>
+
+</div>
+
+
+
+<div id="GiveTakeOrte" >
+
+<h2>Orte</h2></br>
+</div>
+
+<div id="GiveTakeDiskussion" >
+
+<!--<div class="fb-comments" data-href="http://mhash.at?GiveTake" data-num-posts="5" data-width="570"></div>
+-->
+<iframe id="iframe"  frameBorder="0" src="givetake.php"></iframe> 
+</div>
+
+<div id="LeihLagerBut">
+<input id="LLI"
+	type="button" align="left" class="sbtn"
+	value="Info"
+	onclick="document.getElementById('LLI').style.color='black'; document.getElementById('LLI').style.background='#feff60';
+	document.getElementById('LLM').style.color='white'; document.getElementById('LLO').style.color='white'; document.getElementById('LLD').style.color='white'; 
+	document.getElementById('LLM').style.background='black'; document.getElementById('LLO').style.background='black'; document.getElementById('LLD').style.background='black'; 	
+	document.getElementById('LeihLagerInfo').style.display='block'; document.getElementById('LeihLagerMaterial').style.display='none';document.getElementById('LeihLagerOrte').style.display='none'; document.getElementById('LeihLagerDiskussion').style.display='none'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/> 
+<input id="LLM"
+	type="button" align="left" class="sbtn"
+	value="Material"
+	onclick="document.getElementById('LLM').style.color='black'; document.getElementById('LLM').style.background='#feff60';
+	document.getElementById('LLI').style.color='white'; document.getElementById('LLO').style.color='white'; document.getElementById('LLD').style.color='white'; 
+	document.getElementById('LLI').style.background='black'; document.getElementById('LLO').style.background='black'; document.getElementById('LLD').style.background='black'; 	
+	document.getElementById('LeihLagerInfo').style.display='none'; document.getElementById('LeihLagerMaterial').style.display='block';document.getElementById('LeihLagerOrte').style.display='none'; document.getElementById('LeihLagerDiskussion').style.display='none'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/> 
+<input id="LLO"
+	type="button" align="left" class="sbtn"
+	value="Orte"
+	onclick="document.getElementById('LLO').style.color='black'; document.getElementById('LLO').style.background='#feff60';
+	document.getElementById('LLM').style.color='white'; document.getElementById('LLI').style.color='white'; document.getElementById('LLD').style.color='white'; 
+	document.getElementById('LLM').style.background='black'; document.getElementById('LLI').style.background='black'; document.getElementById('LLD').style.background='black'; 	
+	document.getElementById('LeihLagerInfo').style.display='none'; document.getElementById('LeihLagerMaterial').style.display='none';document.getElementById('LeihLagerOrte').style.display='block'; document.getElementById('LeihLagerDiskussion').style.display='none'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/> 
+<input id="LLD"
+	type="button" align="left" class="sbtn"
+	value="Kommentar"
+	onclick="document.getElementById('LLD').style.color='black'; document.getElementById('LLD').style.background='#feff60';
+	document.getElementById('LLM').style.color='white'; document.getElementById('LLO').style.color='white'; document.getElementById('LLI').style.color='white'; 
+	document.getElementById('LLM').style.background='black'; document.getElementById('LLO').style.background='black'; document.getElementById('LLI').style.background='black'; 	
+	document.getElementById('LeihLagerInfo').style.display='none'; document.getElementById('LeihLagerMaterial').style.display='none';document.getElementById('LeihLagerOrte').style.display='none'; document.getElementById('LeihLagerDiskussion').style.display='block'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/>
+</div>
+
+<div id="LeihLagerInfo">
+<h2>Info</h2></br>
+In einem Leihlager teilst du nützliche Gegenstände mit deinen Nachbarn.</br> 
+
+Hier eine Anleitung, die du natürlich modifizieren kannst wenn du willst.</br> 
+</br> 
+1 Gründen</br> 
+Ein Leihlager kann jeder Gründen. Ein Gründer sollte mindestens drei Gegenstände bereitstellen die insgesammt einen geschätzen Wert von 50 Euro haben und sollte in der Lage sein regelmäßig Zugang zu diesen Gegenständen zu gewähren (mehrere Stunden am Tag). Am Besten wäre so etwas wie ein Spätkauf oder eine Bürogemeinschaft. 
+</br> </br> 
+2 Veröffentlichen</br> 
+Um weitere Mitglieder für dein LeihLager zu finden solltest du es auf www.Gridr.at anmelden. Bei Gridr kannst du auch Sticker (z.B. für Briefkästen und deine Nachbarschaft) und Flyer (z.B. Für die Briefkästen deiner Nachbarn) bestellen oder die Templates runter laden.
+</br> </br> 
+3 Beitreten </br> 
+Um dem LeiLager beizutreten muss ein neuer Teilnehmer selber einen oder mehrere Gegenstände im Gesammtwert von ca. 20 Euro in das LeihLager bringen und in das Leihbuch eintragen. Einzige weitere Bedingungen sind, dass man in der direkten Umgebung des LeihLagers lebt, dort also eine Adresse hat und der LeihLager Gründer einen aufnimmt. Zum austreten muss man nur seine eigenen Gegenstände wieder aus dem LeihLager nehmen,
+</br> </br> 
+4 Leihen</br> 
+Als Mitglied kann man dann jederzeit einen oder mehrere Gegenstände im Wert von 20 Euro ausleihen, einfach in das Leihbuch eintragen und abholen. Will man mehr ausleihen, muss man einen Pfand hinterlegen. Sobald man einen Gegenstand ausleiht ist man für diesen Gegenstand verantwortlich. Sollte man den Gegenstand verlieren oder er geht kaputt muss man ihn entweder reparieren oder einen anderen gleichwertigen Gegenstand einbringen. Das gilt auch für Teile eines Gegenstandes, sollte zum Beispiel ein Fahrad einen platten Reifen bekommen, muss man den Reifen reparieren bevor man den Gegenstand zurück bringt. 
+</br> </br></br> 
+</div>
+
+<div id="LeihLagerMaterial">
+<h2>Material</h2></br>
+Sticker und Flyer:</br>
+
+<a href="#" onClick="MyWindow=window.open('ico/LeihLager.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/LeihLager-s.png"/></a>
+<a href="#" onClick="MyWindow=window.open('ico/LeihLager2.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/LeihLager2-s.png"/></a>
+</br></br>
+Zum bestellen einfach Name und Größe (klein=15x15cm oder groß=60x60cm) an Gridr schicken, Schutzgebühr und Porto bezahlen und die Stickr kommen per Post zu dir. </br>
+Bestellung persönlich, per Mail oder Brief möglich, Geld per Überweisung oder persönlich.  
+</div>
+
+<div id="LeihLagerOrte">
+<h2>Orte</h2></br>
+</div>
+
+<div id="LeihLagerDiskussion">
+<!--<div class="fb-comments" data-href="http://mhash.at?D-LeihLager" data-num-posts="5" data-width="570"></div>
+-->
+<iframe id="iframe" frameBorder="0" src="leihlager.php"></iframe> 
+</div>
+
+<div id="TicketBut">
+<input id="TI"
+	type="button" align="left" class="sbtn"
+	value="Info"
+	onclick="document.getElementById('TI').style.color='black'; document.getElementById('TI').style.background='#feff60';
+	document.getElementById('TM').style.color='white'; document.getElementById('TO').style.color='white'; document.getElementById('TD').style.color='white'; 
+	document.getElementById('TM').style.background='black'; document.getElementById('TO').style.background='black'; document.getElementById('TD').style.background='black'; 	
+	document.getElementById('TicketInfo').style.display='block'; document.getElementById('TicketMaterial').style.display='none';document.getElementById('TicketOrte').style.display='none'; document.getElementById('TicketDiskussion').style.display='none'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/> 
+<input id="TM"
+	type="button" align="left" class="sbtn"
+	value="Material"
+	onclick="document.getElementById('TM').style.color='black'; document.getElementById('TM').style.background='#feff60';
+	document.getElementById('TI').style.color='white'; document.getElementById('TO').style.color='white'; document.getElementById('TD').style.color='white'; 
+	document.getElementById('TI').style.background='black'; document.getElementById('TO').style.background='black'; document.getElementById('TD').style.background='black'; 	
+	document.getElementById('TicketInfo').style.display='none'; document.getElementById('TicketMaterial').style.display='block';document.getElementById('TicketOrte').style.display='none'; document.getElementById('TicketDiskussion').style.display='none'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/> 
+<input id="TO"
+	type="button" align="left" class="sbtn"
+	value="Orte"
+	onclick="document.getElementById('TO').style.color='black'; document.getElementById('TO').style.background='#feff60';
+	document.getElementById('TM').style.color='white'; document.getElementById('TI').style.color='white'; document.getElementById('TD').style.color='white'; 
+	document.getElementById('TM').style.background='black'; document.getElementById('TI').style.background='black'; document.getElementById('TD').style.background='black'; 	
+	document.getElementById('TicketInfo').style.display='none'; document.getElementById('Ticketaterial').style.display='none';document.getElementById('TicketOrte').style.display='block'; document.getElementById('TicketDiskussion').style.display='none'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/> 
+<input id="TD"
+	type="button" align="left" class="sbtn"
+	value="Kommentar"
+	onclick="document.getElementById('TD').style.color='black'; document.getElementById('TD').style.background='#feff60';
+	document.getElementById('TM').style.color='white'; document.getElementById('TO').style.color='white'; document.getElementById('TI').style.color='white'; 
+	document.getElementById('TM').style.background='black'; document.getElementById('TO').style.background='black'; document.getElementById('TI').style.background='black'; 	
+	document.getElementById('TicketInfo').style.display='none'; document.getElementById('TicketMaterial').style.display='none';document.getElementById('TicketOrte').style.display='none'; document.getElementById('TicketDiskussion').style.display='block'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/>
+</div>
+
+
+<div id="TicketInfo">
+</br>
+<h2>Info</h2></br>
+Spende deine gebrauchten, aber noch gültigen Tickets! </br>
+Baue einen TicketSpender mit uns!</br></br>
+Einfach eine leere Zigarettenpackung nehmen, vorne einen Ticketspender Stickr drauf kleben und auf der Rückseite doppelseitiges Klebeband. Das ganze kannst du dann einem Ort wo das legal möglich ist anbringen und schon hast du einen Ticketspender gebaut. </br>
+</div>
+
+<div id="TicketMaterial" >
+<h2>Material</h2></br>
+Sticker und Flyer:</br>
+
+<a href="#" onClick="MyWindow=window.open('ico/ticket.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/ticket-s.png"/></a>
+</div>
+
+<div id="TicketOrte" >
+<h2>Orte</h2></br>
+</div>
+
+<div id="TicketDiskussion" >
+<iframe id="iframe"  frameBorder="0" src="ticket.php"></iframe> 
+</div>
+
+<div id="PfandBut">
+<input id="PI"
+	type="button" align="left" class="sbtn"
+	value="Info"
+	onclick="document.getElementById('PI').style.color='black'; document.getElementById('PI').style.background='#feff60';
+	document.getElementById('PM').style.color='white'; document.getElementById('PO').style.color='white'; document.getElementById('PD').style.color='white'; 
+	document.getElementById('PM').style.background='black'; document.getElementById('PO').style.background='black'; document.getElementById('PD').style.background='black'; 	
+	document.getElementById('PfandInfo').style.display='block'; document.getElementById('PfandMaterial').style.display='none';document.getElementById('PfandOrte').style.display='none'; document.getElementById('PfandDiskussion').style.display='none'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/> 
+<input id="PM"
+	type="button" align="left" class="sbtn"
+	value="Material"
+	onclick="document.getElementById('PM').style.color='black'; document.getElementById('PM').style.background='#feff60';
+	document.getElementById('PI').style.color='white'; document.getElementById('PO').style.color='white'; document.getElementById('PD').style.color='white'; 
+	document.getElementById('PI').style.background='black'; document.getElementById('PO').style.background='black'; document.getElementById('PD').style.background='black'; 	
+	document.getElementById('PfandInfo').style.display='none'; document.getElementById('PfandMaterial').style.display='block';document.getElementById('PfandOrte').style.display='none'; document.getElementById('PfandDiskussion').style.display='none'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/> 
+<input id="PO"
+	type="button" align="left" class="sbtn"
+	value="Orte"
+	onclick="document.getElementById('PO').style.color='black'; document.getElementById('PO').style.background='#feff60';
+	document.getElementById('PM').style.color='white'; document.getElementById('PI').style.color='white'; document.getElementById('PD').style.color='white'; 
+	document.getElementById('PM').style.background='black'; document.getElementById('PI').style.background='black'; document.getElementById('PD').style.background='black'; 	
+	document.getElementById('PfandInfo').style.display='none'; document.getElementById('PfandMaterial').style.display='none';document.getElementById('PfandOrte').style.display='block'; document.getElementById('PfandDiskussion').style.display='none'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/> 
+<input id="PD"
+	type="button" align="left" class="sbtn"
+	value="Kommentar"
+	onclick="document.getElementById('PD').style.color='black'; document.getElementById('PD').style.background='#feff60';
+	document.getElementById('PM').style.color='white'; document.getElementById('PO').style.color='white'; document.getElementById('PI').style.color='white'; 
+	document.getElementById('PM').style.background='black'; document.getElementById('PO').style.background='black'; document.getElementById('PI').style.background='black'; 	
+	document.getElementById('PfandInfo').style.display='none'; document.getElementById('PfandMaterial').style.display='none';document.getElementById('PfandOrte').style.display='none'; document.getElementById('PfandDiskussion').style.display='block'"
+	onMouseOver="this.style.opacity=0.6;" onmouseout="this.style.opacity=1.0;"
+	/>
+</div>
+
+<div id="PfandInfo" >
+<h2>Info</h2></br>
+Beim Pfand spenden lässt du deine leeren Pfandflaschen an einem einfach zugänglichen Ort stehen. So spendest du sie einem Pfandsammler der sie für dich zurück bringt und das Geld sicher gebrauchen kann.</br> </br>
+
+</div>
+
+<div id="PfandMaterial" >
+<h2>Material</h2></br>
+Sticker und Flyer:</br>
+
+<a href="#" onClick="MyWindow=window.open('ico/Pfand.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/Pfand-s.png"/></a>
+</div>
+
+<div id="PfandOrte" >
+<h2>Orte</h2></br>
+</div>
+
+<div id="PfandDiskussion" >
+<iframe id="iframe"  frameBorder="0" src="pfand.php"></iframe>
+</div>
+
+
+<div id="Stickr">
+<h2>Gridr Stickr</h2></br>
+
+<a href="#" onClick="MyWindow=window.open('ico/st1-1.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/s1-1.png"/></a>
+
+<a href="#" onClick="MyWindow=window.open('ico/st1-2.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/s1-2.png"/></a>
+
+<a href="#" onClick="MyWindow=window.open('ico/st1-3.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/s1-3.png"/></a></br>
+</br>
+
+
+<a href="#" onClick="MyWindow=window.open('ico/st1-4.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/s1-4.png"/></a>
+<a href="#" onClick="MyWindow=window.open('ico/st1-5.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/s1-5.png"/></a>
+<a href="#" onClick="MyWindow=window.open('ico/st2-1.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/s2-1.png"/></a></br>
+</br>
+
+
+<a href="#" onClick="MyWindow=window.open('ico/st2-2.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/s2-2.png"/></a>
+<a href="#" onClick="MyWindow=window.open('st2-3.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/s2-3.png"/></a>
+<a href="#" onClick="MyWindow=window.open('ico/st2-4.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/s2-4.png"/></a></br>
+</br>
+
+
+<a href="#" onClick="MyWindow=window.open('ico/st2-5.png','MyWindow','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no'); return false; "; "self.close()">
+<img src="ico/s2-5.png"/></a>
+
+</br></br>
+Zum bestellen einfach Name und Größe (klein=15x15cm oder groß=60x60cm) an Gridr schicken, Schutzgebühr und Porto bezahlen und die Stickr kommen per Post zu dir. </br>
+Bestellung persönlich, per Mail oder Brief möglich, Geld per Überweisung oder persönlich.  
+</div>	
+
+<div id="Mehr">
+<h2>Mehr machen</h2></br>
+<b>Schlage ein neues Gridr Thema vor</b></br>
+<form name="Thema" action="/php/thema.php" method="post" target="frame"> 
+<textarea name="Thema" rows="2" cols="50" placeholder="Titel/Beschreibung meines neuen #@ Thema"></textarea></br>
+<input type="text" name="user" placeholder="Meine e-Mail" size="22" required="required"/>
+<input 
+   type="submit" 
+   value="Request" 
+   style="width:80px;" 
+   onclick="" >  
+
+</form>
+</br>
+
+<b>Öffentliches Backlog</b>
+<a style="color:black;" href="docs/backlog.txt" />backlog.txt</a></br>
+Hier kannst du sehen welche Feature geplannt sind und falls du eins davon machen willst  - freuen wir uns über deine mitarbeit :D</br>
+<form name="Backlog" action="/php/backlog.php" method="post" target="frame"> 
+<select name="kategorie" id="kategorie">
+  <option value="1">Item-1</option> <option value="2">Item-2</option><option value="3">Item-3</option><option value="4">Item-4</option><option value="5">Item-5</option><option value="6">Item-6</option><option value="7">Item-7</option><option value="8">Item-8</option><option value="9">Item-9</option><option value="10">Item-10</option><option value="11">Item-11</option><option value="12">Item-12</option>
+</select>
+<input type="text" name="user" placeholder="Meine e-Mail" size="22" required="required"/>
+<input 
+   type="submit" 
+   value="Request" 
+   style="width:80px;" 
+   onclick="" >  
+</form></br>
+<b>Schlage ein neues Gridr Feature vor</b></br>
+<form name="Feature" action="/php/feature.php" method="post" target="frame"> 
+<textarea name="Feature" rows="2" cols="50" placeholder="Titel/Beschreibung meines neuen #@ Feature"></textarea></br>
+<input type="text" name="user" placeholder="Meine e-Mail" size="22" required="required"/>
+<input 
+   type="submit" 
+   value="Request" 
+   style="width:80px;" 
+   onclick="" >  
+<!--<iframe id="iframe"  frameBorder="0" src="mehr.php"></iframe> </form>
+-->
+</form>
+</div>
+
+</div>	
+
+
+
+
+    </body> 
+   
+</html> 
